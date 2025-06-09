@@ -39,6 +39,20 @@
     padding: 50px;
     text-align: center;
     }
+    p, li {
+    color: #666;
+    }
+    .about-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    }
+    .about-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    }
 </style>
 </head>
 <body>
@@ -47,10 +61,29 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
     </nav>
-<h1>Welcome to My GitHub Page</h1>
-<p>This is a basic website hosted with <strong>GitHub Pages</strong>.</p>
-<p>Edit <code>index.html</code> to customize your content.</p>
-<p>
+    <div class="container" id="home">
+        <h1>Welcome to My GitHub Page</h1>
+        <p>This is a basic website hosted with <strong>GitHub Pages</strong>.</p>
+    </div>
+
+    <div class="container" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+        <p>Hi! I'm a developer and tech enthusiast who enjoys building websites, exploring new tools, and contributing to open-source projects. I created this site to share my work, ideas, and resources with the world.</p>
+    
+        <img src="https://via.placeholder.com/600x300" alt="Placeholder image of developer workspace" />
+    
+        <h3>Skills & Interests</h3>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Git & GitHub</li>
+            <li>Responsive Web Design</li>
+            <li>Python & Web Automation</li>
+            <li>UI/UX & Accessibility</li>
+        </ul>
+        </div>
+    </div>
+    <p>
     Learn more about 
     <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 </p>
