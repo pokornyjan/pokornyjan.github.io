@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -6,6 +7,46 @@
   <title>Svatba Honza & Nali</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
   <style>
+        /* Event card styling */
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .event {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 2rem 2.5rem;
+      text-align: left;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .event:hover {
+      box-shadow: 0 8px 32px rgba(83,92,122,0.15);
+    }
+    .event-time {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: bold;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .event h3 {
+      margin-top: 0.5rem;
+      color: var(--primary);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+    }
+    .event p {
+      margin-bottom: 0.5rem;
+    }
     :root {
       --primary: #535C7A;   /* muted blue for headings & buttons */
       --secondary: #F8EDEA; /* soft cream background */
@@ -149,6 +190,19 @@
       padding: 2rem 0;
     }
 
+    .timeline-dot {
+    position: absolute;
+    top: 1.2rem;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    margin-left: -10px;
+    z-index: 2;
+    }
+ 
     .timeline::after {
       content: '';
       position: absolute;
@@ -210,20 +264,24 @@
     .timeline-content::after {
       content: '';
       position: absolute;
-      width: 20px; height: 20px;
+      width: 20px;
+      height: 20px;
       background-color: var(--accent);
       border: 3px solid #fff;
       border-radius: 50%;
       top: 1.2rem;
+      left: 50%;
+      margin-left: -10px; /* half the dot's width to center on the line */
       z-index: 2;
+      transform: none;
     }
 
-    .timeline-item:nth-child(odd) .timeline-content::after {
-      right: calc(-10px - 2rem);
-    }
-
+    /* Remove odd/even dot positioning so all dots are centered */
+    .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
-      left: calc(-10px - 2rem);
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
     }
 
     @media (max-width: 700px) {
@@ -235,7 +293,7 @@
         padding: 1.2rem 1rem 1.2rem 3rem;
       }
       .timeline-time { padding-left: 0 !important; }
-      .timeline-content::after { left: -10px; right: auto; }
+  .timeline-content::after { left: 50%; margin-left: auto; right: auto; transform: none; }
     }
   </style>
 </head>
@@ -245,104 +303,110 @@
     <p>se budou brát</p>
   </header>
 
-  <section>
-    <h2>Důležité detaily</h2>
-    <p class="date">25. října 2025</p>
-    <p>Obřad v 15:00<br>Evanjelický kostol<br>Lazovná 268, 974 01 Banská Bystrica, Slovensko</p>
-    <p>Oslava na chatě Suchý vrch<br>Radvaň 2751, 974 05 Banská Bystrica, Slovensko</p>
-  </section>
+  <main>
+    <section>
+      <h2>Důležité detaily</h2>
+      <p class="date">25. října 2025</p>
+      <p>Obřad v 15:00<br>Evanjelický kostol<br>Lazovná 268, 974 01 Banská Bystrica, Slovensko</p>
+      <p>Oslava na chatě Suchý vrch<br>Radvaň 2751, 974 05 Banská Bystrica, Slovensko</p>
+    </section>
 
-  <section>
-    <h2>Náš svadobný deň </h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-time">15:00</div>
-        <div class="timeline-content">
+    <section>
+      <h2>Náš svadobný deň</h2>
+      <div class="event-list">
+        <div class="event">
+          <div class="event-time">15:00</div>
           <h3>Sobáš v evanjeliskom kostole na Lazovnej ulici</h3>
           <p>Prosím, prídite o 14:45. Zaparkovať môžete priamo pred kostolom, alebo na parkovisku na Striebornom námestí.</p>
           <p>Po gratuláciách nás fotograf spoločne vyfotí pred kostolom.</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">16:30</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">16:30</div>
           <h3>Príjazd na Suchý vrch</h3>
           <p>Welcome drink, focení, přivítání</p>
-          <p>✨ Milí hostia,
-keďže koncom októbra slniečko zapadá pomerne skoro, chceme využiť každý lúč svetla aj na spoločné fotky. Preto sa budeme fotiť organizovane podľa pripraveného zoznamu – nech sa nikto nestratí a všetci máme peknú spomienku.
-Nebojte sa, pôjde to rýchlo a veselo – úsmev je jediná povinnosť! 📸💛
-Ďakujeme, že nám s tým pomôžete.</p>
+          <p>✨ Milí hostia,<br>
+            keďže koncom októbra slniečko zapadá pomerne skoro, chceme využiť každý lúč svetla aj na spoločné fotky. Preto sa budeme fotiť organizovane podľa pripraveného zoznamu – nech sa nikto nestratí a všetci máme peknú spomienku.<br>
+            Nebojte sa, pôjde to rýchlo a veselo – úsmev je jediná povinnosť! 📸💛<br>
+            Ďakujeme, že nám s tým pomôžete.</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">17:30</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">17:30</div>
           <h3>Svatební proslovy a poděkování</h3>
           <p>Prostor pro pár vlídných slov pro ženicha a nevěstu od rodiny a přátel</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">18:00</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">18:00</div>
           <h3>Podávání slavnostní večeře</h3>
-          <p>  </p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">18:45</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">18:45</div>
           <h3>První tanec</h3>
           <p>A hned za ním všechny další, hudba a zábava.</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">20:00</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">20:00</div>
           <h3>Krájení dortu</h3>
           <p>Po tanci doplníme síly výborným dortem a kávou.</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">23:00</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">23:00</div>
           <h3>Čepčenie a vykrúcanka</h3>
           <p>Nevěsta se loučí se svobodou a stává se ženou – se zpěvem, slzičkou i úsměvem. Potom si ji (nebo ženicha) můžete vykrútiť na parketu – tanec se vykupuje malým příspěvkem pro šťastný společný začátek.</p>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">00:00</div>
-        <div class="timeline-content">
+        <div class="event">
+          <div class="event-time">00:00</div>
           <h3>Afterparty</h3>
-          <p>Když děti spí, rodiče paří! 😄 Po půlnoci to na parketu rozjedeme naplno – čeká nás elektronická hudba, Prodigy i drum and bass.
-Protože běžně už na párty nechodíme, tahle noc je pro nás výjimečná šance pořádně se pobavit – a chceme si ji užít hlavně s vámi, našimi přáteli a rodinou. Přidejte se, ať je na co vzpomínat!</p>
+          <p>Když děti spí, rodiče paří! 😄 Po půlnoci to na parketu rozjedeme naplno – čeká nás elektronická hudba, Prodigy i drum and bass.<br>
+            Protože běžně už na párty nechodíme, tahle noc je pro nás výjimečná šance pořádně se pobavit – a chceme si ji užít hlavně s vámi, našimi přáteli a rodinou. Přidejte se, ať je na co vzpomínat!</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Přidejte se k oslavě</h2>
-    <p>Potvrďte prosím svou účast, ať vám můžeme rezervovat místo u stolu</p>
-    <p>Na zadanú emailovú adresu Vám v prípade akejkoľvek zmeny zašleme aktuálne info, prípadne užitočné odkazy a nakoniec aj odkaz k svadobným fotografiám. </p>
-    <form action="https://formspree.io/f/xdkdjdrr" method="POST" class="rsvp-form">
-      <input type="text" name="name" placeholder="Jméno a příjmení" required>
-      <input type="email" name="email" placeholder="E-mailová adresa" required>
-      <select name="attendance" required>
-        <option value="">Zúčastníte se?</option>
-        <option value="Ano, rádi!">Ano, rádi!</option>
-        <option value="Bohužel nebudeme moci">Bohužel nebudeme moci</option>
-      <select name="shuttle" required>
-        <option value="">Máte záujem o organizovanú dopravu?</option>
-        <option value="Zariadim sa po svojom">Zariadim sa po svojom</option>
-        <option value="Ano, rádi!">Prosím, napíšte nám odkiaľ a kam (Komplet od kostola, na oslavu až domov/ len z oslavy, / etc...)</option>
-      </select>
-      <textarea name="message" placeholder="Zadajte počet ľudí, prípadné detské porcie, alebo preferenciu bezmäsitej stravy, či iné potravinové obmedzenia." rows="4"></textarea>
-      <button type="submit">Odeslat</button>
-    </form>
-  </section>
+    <section>
+      <h2>Přidejte se k oslavě</h2>
+      <p>Potvrďte prosím svou účast, ať vám můžeme rezervovat místo u stolu</p>
+      <p>Na zadanú emailovú adresu Vám v prípade akejkoľvek zmeny zašleme aktuálne info, prípadne užitočné odkazy a nakoniec aj odkaz k svadobným fotografiám.</p>
+      <form action="https://formspree.io/f/xdkdjdrr" method="POST" class="rsvp-form">
+        <label for="name">Jméno a příjmení</label>
+        <input type="text" id="name" name="name" placeholder="Jméno a příjmení" required>
+        <label for="email">E-mailová adresa</label>
+        <input type="email" id="email" name="email" placeholder="E-mailová adresa" required>
+        <label for="attendance">Zúčastníte se?</label>
+        <select id="attendance" name="attendance" required>
+          <option value="">Vyberte možnost</option>
+          <option value="Ano, rádi!">Ano, rádi!</option>
+          <option value="Bohužel nebudeme moci">Bohužel nebudeme moci</option>
+        </select>
+        <label for="shuttle">Máte záujem o organizovanú dopravu?</label>
+        <select id="shuttle" name="shuttle" required onchange="toggleShuttleDetails()">
+          <option value="">Vyberte možnost</option>
+          <option value="Zariadim sa po svojom">Zariadim sa po svojom</option>
+          <option value="Ano, rádi!">Ano, rádi!</option>
+        </select>
+        <div id="shuttle-details-container" style="display:none; margin-top:1rem;">
+          <label for="shuttle-details">Detaily dopravy</label>
+          <input type="text" id="shuttle-details" name="shuttle-details" placeholder="Odkiaľ a kam potrebujete dopravu?">
+        </div>
+        <label for="message">Počet ľudí, dětské porcie, bezmasá strava, potravinové obmedzenia</label>
+        <textarea id="message" name="message" placeholder="Zadajte počet ľudí, prípadné detské porcie, alebo preferenciu bezmäsitej stravy, či iné potravinové obmedzenia." rows="4"></textarea>
+        <button type="submit">Odeslat</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
     <p>S láskou, Nali & Honza</p>
   </footer>
+  <script>
+    function toggleShuttleDetails() {
+      var shuttleSelect = document.getElementById('shuttle');
+      var detailsContainer = document.getElementById('shuttle-details-container');
+      if (shuttleSelect.value === 'Ano, rádi!') {
+        detailsContainer.style.display = 'block';
+      } else {
+        detailsContainer.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
