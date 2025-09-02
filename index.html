@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -7,7 +6,48 @@
   <title>Svatba Honza & Nali</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
   <style>
-        /* Event card styling */
+    .couple-gallery-viewer {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin-bottom: 2rem;
+      max-width: 650px;
+      min-width: 320px;
+    }
+      .gallery-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        padding: 1.5rem 2rem 2rem 2rem;
+        margin: 2rem auto;
+        max-width: 650px;
+        min-width: 320px;
+      }
+      .gallery-container img {
+        display: block;
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        object-fit: contain;
+      }
+      .gallery-nav-btns {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+      }
+    /* Event card styling */
     .event-list {
       display: flex;
       flex-direction: column;
@@ -165,18 +205,7 @@
     footer p {
       margin: 0;
     }
-        .couple-gallery-viewer {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      padding: 2rem 2.5rem 2.5rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      min-height: 350px;
-      margin-bottom: 2rem;
-    }
+
     .couple-gallery-caption {
       color: var(--text);
       font-size: 1.1rem;
@@ -268,16 +297,16 @@
     }
 
     .timeline-dot {
-    position: absolute;
-    top: 1.2rem;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: var(--accent);
-    border: 3px solid #fff;
-    border-radius: 50%;
-    margin-left: -10px;
-    z-index: 2;
+      position: absolute;
+      top: 1.2rem;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background-color: var(--accent);
+      border: 3px solid #fff;
+      border-radius: 50%;
+      margin-left: -10px;
+      z-index: 2;
     }
  
     .timeline::after {
@@ -348,7 +377,7 @@
       border-radius: 50%;
       top: 1.2rem;
       left: 50%;
-      margin-left: -10px; /* half the dot's width to center on the line */
+      margin-left: -10px;
       z-index: 2;
       transform: none;
     }
@@ -370,7 +399,7 @@
         padding: 1.2rem 1rem 1.2rem 3rem;
       }
       .timeline-time { padding-left: 0 !important; }
-  .timeline-content::after { left: 50%; margin-left: auto; right: auto; transform: none; }
+      .timeline-content::after { left: 50%; margin-left: auto; right: auto; transform: none; }
     }
   </style>
 </head>
@@ -390,15 +419,13 @@
 
     <section class="couple-gallery-section">
       <div class="couple-gallery-title">Fotky páru</div>
-      <div class="couple-gallery-viewer">
-        <img id="gallery-photo" src="IMG_0664.jpg" alt="Honza a Nali - IMG_0664" style="width:100%;max-width:320px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:1rem;object-fit:cover;">
-        <div class="couple-gallery-caption" id="gallery-caption">Společná chvíle 1</div>
-        <div>
-          <button class="gallery-nav-btn" id="gallery-prev">Předchozí</button>
-          <button class="gallery-nav-btn" id="gallery-next">Další</button>
+        <div class="gallery-container">
+          <img id="gallery-photo" src="IMG_0664.jpg" alt="Honza a Nali">
+          <div class="gallery-nav-btns">
+            <button class="gallery-nav-btn" id="gallery-prev">Předchozí</button>
+            <button class="gallery-nav-btn" id="gallery-next">Další</button>
+          </div>
         </div>
-      </div>
-
     </section>
 
     <section>
@@ -491,21 +518,25 @@
     // Couple gallery swipe logic
     document.addEventListener('DOMContentLoaded', function() {
       var photos = [
-        {src: 'IMG_0664.jpg', caption: 'Společná chvíle 1'},
-        {src: 'IMG_5537.jpg', caption: 'Společná chvíle 2'},
-        {src: 'IMG_5830.jpg', caption: 'Společná chvíle 3'},
-        {src: 'IMG_8131.jpg', caption: 'Společná chvíle 4'}
+        '114523.jpeg',
+        'FullSizeRender.jpeg',
+        'IMG_0515.jpeg',
+        'IMG_0721.jpeg',
+        'IMG_0841.jpeg',
+        'IMG_0950.jpeg',
+        'IMG_5537.jpg',
+        'IMG_9725.jpeg',
+        'IMG_9921.JPG'
       ];
       var current = 0;
       var photoEl = document.getElementById('gallery-photo');
-      var captionEl = document.getElementById('gallery-caption');
       var prevBtn = document.getElementById('gallery-prev');
       var nextBtn = document.getElementById('gallery-next');
       function showPhoto(idx) {
-        photoEl.src = photos[idx].src;
-        photoEl.alt = 'Honza a Nali - ' + photos[idx].src;
-        captionEl.textContent = photos[idx].caption;
+        photoEl.src = photos[idx];
+        photoEl.alt = 'Honza a Nali';
       }
+      showPhoto(0); // Ensure first image is rendered on page load
       prevBtn.addEventListener('click', function() {
         current = (current - 1 + photos.length) % photos.length;
         showPhoto(current);
@@ -527,3 +558,4 @@
   </script>
 </body>
 </html>
+
