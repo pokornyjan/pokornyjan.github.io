@@ -1,20 +1,9 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
-import ResumeEntry from "../components/ResumeEntry.astro";
 import ResumeHeader from "../components/ResumeHeader.astro";
 import ResumeSection from "../components/ResumeSection.astro";
 import ResumeSidebar from "../components/ResumeSidebar.astro";
 import ResumeLayout from "../layouts/ResumeLayout.astro";
-
-const experience = [
-  { date: "2022 — Present", title: "TBD", organization: "TBD", description: "TBD" },
-  { date: "2016 — 2022", title: "TBD", organization: "TBD", description: "TBD" },
-];
-
-const education = [
-  { date: "TBD", title: "TBD", organization: "TBD", description: "TBD" },
-  { date: "TBD", title: "TBD", organization: "TBD", description: "TBD" },
-];
 
 const contact: Array<{ type: "location" | "email" | "phone" | "website"; value: string; detail?: string }> = [
   { type: "email", value: "palacky.jan@outlook.com" },
@@ -47,12 +36,19 @@ const projects = [
     <div class="main">
       <ResumeHeader name="Jan Palacký" role="Software Engineer" summary={summary} />
 
-      <ResumeSection title="Experience">
-        {experience.map((entry) => <ResumeEntry {...entry} />)}
-      </ResumeSection>
-
-      <ResumeSection title="Education">
-        {education.map((entry) => <ResumeEntry {...entry} />)}
+      <ResumeSection title="Career Details">
+        <nav class="career-links" aria-label="Career details">
+          <a class="career-link" href="/experience/">
+            <span class="career-link-title">Experience</span>
+            <span class="career-link-description">View work history and sample responsibilities</span>
+            <span class="career-link-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="career-link" href="/education/">
+            <span class="career-link-title">Education</span>
+            <span class="career-link-description">View sample education and training</span>
+            <span class="career-link-arrow" aria-hidden="true">→</span>
+          </a>
+        </nav>
       </ResumeSection>
 
       <ResumeSection title="Selected Projects">

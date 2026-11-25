@@ -1,0 +1,42 @@
+---
+import ResumeEntry from "../components/ResumeEntry.astro";
+import ResumeSection from "../components/ResumeSection.astro";
+import ResumeLayout from "../layouts/ResumeLayout.astro";
+
+const experience = [
+  {
+    date: "2022 — Present",
+    title: "DevOps Engineer",
+    organization: "Example Technology Company",
+    description:
+      "Sample: Built and maintained CI/CD pipelines, containerized services with Docker, and improved deployment reliability through automation and monitoring.",
+  },
+  {
+    date: "2016 — 2022",
+    title: "Software Engineer",
+    organization: "Sample Systems Ltd.",
+    description:
+      "Sample: Developed and tested backend services, collaborated on code reviews, and supported production releases with the engineering team.",
+  },
+];
+---
+
+<ResumeLayout title="Experience — Jan Palacký" description="Sample work experience for Jan Palacký's resume">
+  <main class="detail-page">
+    <a class="back-link" href="/">← Back to resume</a>
+    <header class="detail-header">
+      <h1 class="name">Experience</h1>
+      <p class="title">Software Engineer · DevOps</p>
+    </header>
+
+    <p class="sample-notice"><strong>Sample text:</strong> The roles, organizations, dates, and descriptions below are examples only. Replace them with your actual experience before publishing.</p>
+
+    <ResumeSection title="Work History">
+      {experience.map((entry) => <ResumeEntry {...entry} />)}
+    </ResumeSection>
+
+    <nav class="detail-nav" aria-label="Other resume pages">
+      <a href="/education/">View Education →</a>
+    </nav>
+  </main>
+</ResumeLayout>
