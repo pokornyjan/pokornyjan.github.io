@@ -1,0 +1,21 @@
+---
+import ProjectCard from "../../components/ProjectCard.astro";
+import ResumeLayout from "../../layouts/ResumeLayout.astro";
+import { projects } from "../../data/projects";
+---
+
+<ResumeLayout title="Projects — Jan Palacký" description="Sample software and DevOps projects for Jan Palacký's resume">
+  <main class="detail-page projects-page">
+    <a class="back-link" href="/">← Back to resume</a>
+    <header class="detail-header">
+      <h1 class="name">Projects</h1>
+      <p class="title">Software Engineering · DevOps</p>
+    </header>
+
+    <p class="sample-notice"><strong>Sample text:</strong> These project concepts and summaries are examples only, not claims about completed work. Replace them with your actual projects before publishing.</p>
+
+    <div class="projects">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </main>
+</ResumeLayout>

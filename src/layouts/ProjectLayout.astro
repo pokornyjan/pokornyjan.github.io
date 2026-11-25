@@ -1,0 +1,31 @@
+---
+import ResumeLayout from "./ResumeLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  projectTitle: string;
+}
+
+const { title, description, category, projectTitle } = Astro.props;
+---
+
+<ResumeLayout title={title} description={description}>
+  <main class="detail-page project-detail">
+    <a class="back-link" href="/projects/">← Back to projects</a>
+    <header class="detail-header">
+      <p class="project-category">{category}</p>
+      <h1 class="name">{projectTitle}</h1>
+    </header>
+
+    <p class="sample-notice"><strong>Sample text:</strong> This project description and its details are illustrative examples, not claims about completed work. Replace them with your actual project information before publishing.</p>
+
+    <slot />
+
+    <nav class="detail-nav" aria-label="Project navigation">
+      <a href="/projects/">← All projects</a>
+      <a href="/">Back to resume</a>
+    </nav>
+  </main>
+</ResumeLayout>

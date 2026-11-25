@@ -4,6 +4,7 @@ import ResumeHeader from "../components/ResumeHeader.astro";
 import ResumeSection from "../components/ResumeSection.astro";
 import ResumeSidebar from "../components/ResumeSidebar.astro";
 import ResumeLayout from "../layouts/ResumeLayout.astro";
+import { projects } from "../data/projects";
 
 const contact: Array<{ type: "location" | "email" | "phone" | "website"; value: string; detail?: string }> = [
   { type: "email", value: "palacky.jan@outlook.com" },
@@ -23,10 +24,6 @@ const languages = [
   { name: "German", level: "Conversational" },
 ];
 const summary = "";
-const projects = [
-  { title: "TBD", description: "TBD" },
-  { title: "TBD", description: "TBD" },
-];
 ---
 
 <ResumeLayout title="Jan Palacký — Resume" description="Jan Palacký — Resume">
@@ -55,6 +52,7 @@ const projects = [
         <div class="projects">
           {projects.map((project) => <ProjectCard {...project} />)}
         </div>
+        <a class="all-projects-link" href="/projects/">View all projects →</a>
       </ResumeSection>
     </div>
   </main>

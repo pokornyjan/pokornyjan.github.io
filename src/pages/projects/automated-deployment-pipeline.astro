@@ -1,0 +1,23 @@
+---
+import ResumeSection from "../../components/ResumeSection.astro";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+---
+
+<ProjectLayout
+  title="Automated Deployment Pipeline — Projects"
+  description="Sample DevOps project: an automated deployment pipeline."
+  category="DevOps · CI/CD"
+  projectTitle="Automated Deployment Pipeline"
+>
+  <ResumeSection title="Overview">
+    <p class="project-copy">Sample: Designed a pipeline for a containerized web service that runs automated checks, builds a versioned image, and deploys it to a test environment after changes are merged.</p>
+  </ResumeSection>
+
+  <ResumeSection title="Tools &amp; Approach">
+    <p class="project-copy">Sample: Python, Docker, GitHub Actions, and Linux. The workflow separates build, test, and deployment steps, keeps configuration outside the application code, and provides clear logs for diagnosing failures.</p>
+  </ResumeSection>
+
+  <ResumeSection title="Example Outcome">
+    <p class="project-copy">Sample: The pipeline is intended to make releases more repeatable and reduce manual deployment steps. Replace this with a verified outcome or metric from your own work.</p>
+  </ResumeSection>
+</ProjectLayout>

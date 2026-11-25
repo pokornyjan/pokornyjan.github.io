@@ -2,12 +2,24 @@
 interface Props {
   title: string;
   description: string;
+  href?: string;
+  category?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, href, category } = Astro.props;
 ---
 
-<article class="project">
-  <h3>{title}</h3>
-  <p>{description}</p>
-</article>
+{href ? (
+  <a class="project project-link" href={href}>
+    {category && <span class="project-card-category">{category}</span>}
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <span class="project-arrow" aria-hidden="true">Read project →</span>
+  </a>
+) : (
+  <article class="project">
+    {category && <span class="project-card-category">{category}</span>}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </article>
+)}
